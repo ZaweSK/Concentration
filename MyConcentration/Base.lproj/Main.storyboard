@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p4P-Pm-dmT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IZZ-tY-bJq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,7 +66,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6AA-WT-eMg"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="2hf-NB-Jth"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="2hf-NB-Jth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzX-mM-CTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -328,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127.2" y="107.49625187406298"/>
+            <point key="canvasLocation" x="167" y="1094"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iEb-Sb-Hb4">
@@ -348,5 +348,21 @@
             </objects>
             <point key="canvasLocation" x="-772" y="106.59670164917542"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="U1Y-9m-fwI">
+            <objects>
+                <splitViewController id="IZZ-tY-bJq" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="p4P-Pm-dmT" kind="relationship" relationship="masterViewController" id="DMk-dS-HZr"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="cd9-dE-BIB"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0c-3G-4bV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1836" y="692"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2hf-NB-Jth"/>
+    </inferredMetricsTieBreakers>
 </document>
