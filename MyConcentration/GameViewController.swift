@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
             let card = game.cards[index]
             if card.isFaceUp{
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                button.setTitle(emoji(game.cards[index].identifier), for: .normal)
+                button.setTitle(emoji(card), for: .normal)
             }else{
                 button.setTitle("", for: .normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : cardColor
@@ -70,13 +70,13 @@ class GameViewController: UIViewController {
     }
     
     var emojiChoices = [String]()
-    var emoji = [Int:String]()
+    var emoji = [Card:String]()
     
-    private func emoji(_ cardIdentifier: Int)->String{
-        if emoji[cardIdentifier] == nil, emojiChoices.count > 0 {
-            emoji[cardIdentifier] = emojiChoices.remove(at: emojiChoices.count.arc4_random)
+    private func emoji(_ card: Card)->String{
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4_random)
         }
-        return emoji[cardIdentifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     var cardColor: UIColor?

@@ -11,10 +11,14 @@ import Foundation
 struct Card: Hashable  {
     var isFaceUp = false
     var isMatched = false
-    var identifier: Int
+    private var identifier: Int
     
     static func ==(lhs : Card, rhs : Card) -> Bool {
         return lhs.identifier == rhs.identifier
+    }
+    
+    var hashValue: Int {
+        return identifier
     }
     
     init(){
