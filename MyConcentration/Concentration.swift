@@ -29,7 +29,6 @@ struct Concentration{
                 cards[index].isFaceUp = (index == newValue)
             }
         }
-        
     }
     // nefunguje vyberanie kariet
 
@@ -45,9 +44,17 @@ struct Concentration{
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
-        
     }
     
+    
+    mutating func reset(){
+        cards = cards.map{
+            var mutableCard = $0
+            mutableCard.isFaceUp = false
+            mutableCard.isMatched = false
+            return mutableCard
+        }
+    }
 }
 
 extension Array{

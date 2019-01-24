@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    lazy var game = Concentration(numberOfPairsOfCards: 4)
+    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs)
 
 
     @IBOutlet var cardButtons: [UIButton]!
