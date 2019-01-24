@@ -15,22 +15,38 @@ class GameViewController: UIViewController {
 
     @IBOutlet var cardButtons: [UIButton]!
     
+    private var visibleCardButtons : [UIButton]!{
+        return cardButtons?.filter{ !$0.superview!.isHidden }
+    }
+    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     private var flipCount: Int = 0 {
         didSet{
-            flipCountLabel.text = "Flips: \(flipCount)"
+            updateFlipCountLabel()
         }
     }
     
+    private func updateFlipCountLabel(){
+        flipCountLabel.text = traitCollection.verticalSizeClass == .compact ? "Flips\n\(flipCount)" : "Flips: \(flipCount)"
+    }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateFlipCountLabel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateViewFromModel()
+    }
     
     var numberOfPairs: Int {
-        return cardButtons.count / 2
+        return visibleCardButtons.count / 2
     }
     
     func updateViewFromModel(){
-        for (index, button) in cardButtons.enumerated() {
+        for (index, button) in visibleCardButtons.enumerated() {
             let card = game.cards[index]
             if card.isFaceUp{
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -44,7 +60,7 @@ class GameViewController: UIViewController {
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-        if let cardNumber = cardButtons.index(of: sender){
+        if let cardNumber = visibleCardButtons.index(of: sender){
             game.chooseCard(atIndex: cardNumber)
             updateViewFromModel()
         }else{
