@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
 
     lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs)
 
@@ -33,11 +33,11 @@ class ViewController: UIViewController {
         for (index, button) in cardButtons.enumerated() {
             let card = game.cards[index]
             if card.isFaceUp{
-                button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 button.setTitle(emoji(game.cards[index].identifier), for: .normal)
             }else{
                 button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : cardColor
             }
         }
     }
@@ -53,21 +53,19 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        updateViewFromModel()
+        
     }
+    
+    
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.reset()
         emoji = [:]
-        emojiChoices = resetEmojiChoices()
+        emojiChoices = theme!
         updateViewFromModel()
     }
     
-    private func resetEmojiChoices() -> [String]{
-        return ["🦝","🐁","🦋","🦒", "🐕", "🐒", "🐖", "🦉", "🕷","🐬"]
-    }
-    
-    lazy var emojiChoices =  resetEmojiChoices()
+    var emojiChoices = [String]()
     var emoji = [Int:String]()
     
     private func emoji(_ cardIdentifier: Int)->String{
@@ -75,6 +73,16 @@ class ViewController: UIViewController {
             emoji[cardIdentifier] = emojiChoices.remove(at: emojiChoices.count.arc4_random)
         }
         return emoji[cardIdentifier] ?? "?"
+    }
+    
+    var cardColor: UIColor?
+    
+    var theme: [String]? {
+        didSet{
+            emojiChoices = theme ?? []
+            emoji = [:]
+            updateViewFromModel()
+        }
     }
 }
 
