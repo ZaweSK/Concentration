@@ -220,18 +220,28 @@
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2ox-DK-0QV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et1-g2-Snq">
+                                <rect key="frame" x="16" y="621" width="78.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hMP-S6-cBe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="7JN-E9-3IJ"/>
+                            <constraint firstItem="et1-g2-Snq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DEh-IS-q3V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hMP-S6-cBe" secondAttribute="trailing" constant="16" id="O1d-Is-WaD"/>
+                            <constraint firstItem="2jh-1W-uAQ" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hMP-S6-cBe" secondAttribute="bottom" constant="50" id="OKV-nE-XiU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2jh-1W-uAQ" secondAttribute="trailing" constant="16" id="URP-vv-g3F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2jh-1W-uAQ" secondAttribute="bottom" constant="16" id="dAs-Dt-PEK"/>
                             <constraint firstItem="hMP-S6-cBe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mZE-Pi-jTZ"/>
+                            <constraint firstItem="2jh-1W-uAQ" firstAttribute="bottom" secondItem="et1-g2-Snq" secondAttribute="bottom" id="rWp-8I-Q7y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="flipCountLabel" destination="et1-g2-Snq" id="NaR-kz-agl"/>
                         <outletCollection property="cardButtons" destination="m9k-WY-CUj" collectionClass="NSMutableArray" id="Hdx-DY-Cwk"/>
                         <outletCollection property="cardButtons" destination="Zd5-jQ-lmR" collectionClass="NSMutableArray" id="00d-m4-zE1"/>
                         <outletCollection property="cardButtons" destination="BxG-dH-xWm" collectionClass="NSMutableArray" id="bo7-ix-wc8"/>

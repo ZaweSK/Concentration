@@ -15,7 +15,14 @@ class ViewController: UIViewController {
 
     @IBOutlet var cardButtons: [UIButton]!
     
-
+    @IBOutlet weak var flipCountLabel: UILabel!
+    
+    private var flipCount: Int = 0 {
+        didSet{
+            flipCountLabel.text = "Flips: \(flipCount)"
+        }
+    }
+    
     
     
     var numberOfPairs: Int {
@@ -36,6 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
+        flipCount += 1
         if let cardNumber = cardButtons.index(of: sender){
             game.chooseCard(atIndex: cardNumber)
             updateViewFromModel()
