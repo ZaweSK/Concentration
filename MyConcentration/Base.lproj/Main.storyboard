@@ -209,11 +209,24 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-1W-uAQ">
+                                <rect key="frame" x="262" y="615" width="97" height="36"/>
+                                <color key="backgroundColor" red="0.94164419420000001" green="0.54121495600000002" blue="0.01731035626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2ox-DK-0QV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hMP-S6-cBe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="7JN-E9-3IJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hMP-S6-cBe" secondAttribute="trailing" constant="16" id="O1d-Is-WaD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2jh-1W-uAQ" secondAttribute="trailing" constant="16" id="URP-vv-g3F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2jh-1W-uAQ" secondAttribute="bottom" constant="16" id="dAs-Dt-PEK"/>
                             <constraint firstItem="hMP-S6-cBe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mZE-Pi-jTZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

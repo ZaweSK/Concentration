@@ -48,8 +48,18 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    @IBAction func startNewGame(_ sender: UIButton) {
+        game.reset()
+        emoji = [:]
+        emojiChoices = resetEmojiChoices()
+        updateViewFromModel()
+    }
     
-    var emojiChoices = ["🦝","🐁","🦋","🦒", "🐕", "🐒", "🐖", "🦉", "🕷","🐬"]
+    private func resetEmojiChoices() -> [String]{
+        return ["🦝","🐁","🦋","🦒", "🐕", "🐒", "🐖", "🦉", "🕷","🐬"]
+    }
+    
+    lazy var emojiChoices =  resetEmojiChoices()
     var emoji = [Int:String]()
     
     private func emoji(_ cardIdentifier: Int)->String{
