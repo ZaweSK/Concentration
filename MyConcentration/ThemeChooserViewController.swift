@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeChooserViewController: UIViewController {
+class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
     
     private var themeColors = [
         "Haloween" : [
@@ -47,10 +47,52 @@ class ThemeChooserViewController: UIViewController {
     ]
     
     
-
-    @IBAction func changeTheme(_ sender: Any) {
-        performSegue(withIdentifier: "Choose Theme", sender: sender)
+    
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
     }
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        if let gvc = secondaryViewController as? GameViewController{
+            if gvc.theme == nil {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func changeTheme(_ sender: Any) {
+        if let gameInProgress = splitViewControllerDetail {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = gameThemes[themeName] {
+                gameInProgress.cardColor = themeColors[themeName]!["cardColor"]
+                gameInProgress.view.backgroundColor = themeColors[themeName]!["backgroundColor"]
+                gameInProgress.theme = theme
+            }
+        }else if let gameInProgress = lastSeguedToGameViewCotroller{
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = gameThemes[themeName] {
+                gameInProgress.cardColor = themeColors[themeName]!["cardColor"]
+                gameInProgress.view.backgroundColor = themeColors[themeName]!["backgroundColor"]
+                gameInProgress.theme = theme
+            }
+            navigationController?.pushViewController(gameInProgress, animated: true)
+        }else{
+            performSegue(withIdentifier: "Choose Theme", sender: sender)
+            
+        }
+    }
+    
+    private var splitViewControllerDetail: GameViewController? {
+        return splitViewController?.viewControllers.last as? GameViewController
+    }
+    
+    var lastSeguedToGameViewCotroller: GameViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme"{
@@ -59,6 +101,7 @@ class ThemeChooserViewController: UIViewController {
                     gvc.cardColor = themeColors[themeName]!["cardColor"]
                     gvc.view.backgroundColor = themeColors[themeName]!["backgroundColor"]
                     gvc.theme = theme
+                    lastSeguedToGameViewCotroller = gvc
                 }
             }
         }

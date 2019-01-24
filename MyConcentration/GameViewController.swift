@@ -51,12 +51,16 @@ class GameViewController: UIViewController {
             print("Choosen card not in card buttons")
         }
     }
+
     
     override func viewDidLoad() {
-        
+        if theme == nil {
+            emojiChoices = ["👻","🎃","👿","🍬","🙀","💀","🦇","😱","🍎","⚰️","🍭"]
+            cardColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            updateViewFromModel()
+        }
     }
-    
-    
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.reset()
