@@ -33,6 +33,11 @@ struct Concentration{
     // nefunguje vyberanie kariet
 
     mutating func chooseCard(atIndex index: Int){
+        if index == indexOfOneAndOnlyFaceUpCard {
+            cards[index].isFaceUp = false
+            return
+        }
+        
         if !cards[index].isMatched{
             if let alreadyFlippedCardIndex = indexOfOneAndOnlyFaceUpCard, alreadyFlippedCardIndex != index{
                 if cards[alreadyFlippedCardIndex] == cards[index]{
