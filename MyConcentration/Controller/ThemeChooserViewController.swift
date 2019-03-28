@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
+class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegate
+
+{
+    // MARK: - Stored Properities
     
     private var themeColors = [
         "Haloween" : [
@@ -47,10 +50,15 @@ class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegat
     ]
     
     
+     var lastSeguedToGameViewCotroller: GameViewController?
+    
+    // MARK: - Life Cycle
     
     override func awakeFromNib() {
         splitViewController?.delegate = self
     }
+    
+    // MARK: - Split View Controller Delegate methods
     
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
@@ -63,10 +71,7 @@ class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegat
         return false
     }
     
-    
-    
-    
-    
+    // MARK: - @IBAction
     
     @IBAction func changeTheme(_ sender: Any) {
         if let gameInProgress = splitViewControllerDetail {
@@ -92,7 +97,7 @@ class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegat
         return splitViewController?.viewControllers.last as? GameViewController
     }
     
-    var lastSeguedToGameViewCotroller: GameViewController?
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme"{

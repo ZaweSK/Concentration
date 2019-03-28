@@ -60,17 +60,33 @@
 		D076AD4021F8A6B600A595C4 /* MyConcentration */ = {
 			isa = PBXGroup;
 			children = (
+				D09F12EC224D087300D4B056 /* Controller */,
+				D09F12EB224D083500D4B056 /* Model */,
 				D076AD4121F8A6B600A595C4 /* AppDelegate.swift */,
-				D076AD4321F8A6B600A595C4 /* GameViewController.swift */,
 				D076AD4521F8A6B600A595C4 /* Main.storyboard */,
-				D076AD5721F9939D00A595C4 /* ThemeChooserViewController.swift */,
-				D076AD5321F8A75D00A595C4 /* Card.swift */,
-				D076AD5521F8A78900A595C4 /* Concentration.swift */,
 				D076AD4821F8A6B700A595C4 /* Assets.xcassets */,
 				D076AD4A21F8A6B700A595C4 /* LaunchScreen.storyboard */,
 				D076AD4D21F8A6B700A595C4 /* Info.plist */,
 			);
 			path = MyConcentration;
+			sourceTree = "<group>";
+		};
+		D09F12EB224D083500D4B056 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D076AD5521F8A78900A595C4 /* Concentration.swift */,
+				D076AD5321F8A75D00A595C4 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D09F12EC224D087300D4B056 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D076AD5721F9939D00A595C4 /* ThemeChooserViewController.swift */,
+				D076AD4321F8A6B600A595C4 /* GameViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

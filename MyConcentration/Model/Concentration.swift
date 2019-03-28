@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct Concentration{
+struct Concentration
+{
+    
+    // MARK: - Properities
     
     var cards = [Card]()
+    
+    // MARK: - Initialisers
     
     init(numberOfPairsOfCards: Int){
         for _ in 0..<numberOfPairsOfCards{
@@ -19,6 +24,8 @@ struct Concentration{
         }
         cards.shuffle()
     }
+    
+    // MARK: - Game logic
     
     var indexOfOneAndOnlyFaceUpCard: Int?{
         get{
@@ -30,7 +37,6 @@ struct Concentration{
             }
         }
     }
-    // nefunguje vyberanie kariet
 
     mutating func chooseCard(atIndex index: Int){
         if index == indexOfOneAndOnlyFaceUpCard {
@@ -50,7 +56,6 @@ struct Concentration{
             }
         }
     }
-    
     
     mutating func reset(){
         cards = cards.map{
